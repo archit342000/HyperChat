@@ -752,4 +752,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sendBtn.addEventListener('click', sendMessage);
+
+    // 6. Mobile Keyboard Stability (Visual Viewport Sync)
+    if (window.visualViewport) {
+        const chatInputArea = document.getElementById('chat-input-area');
+
+        const syncViewport = () => {
+            if (window.innerWidth <= 768) {
+                // Calculate the offset from the bottom of the layout viewport
+                const offset = window.innerHeight - window.visualViewport.height;
+                // Move the fixed input area up by the keyboard height
+                chatInputArea.style.transform = `translateY(-${offset}px)`;
+
+                // Ensure message stream is also correctly offset if needed
+                // (Though with SVH/fixed layout, this is usually enough for the input)
+            } else {
+                chatInputArea.style.transform = '';
+            }
+        };
+
+        window.visualViewport.addEventListener('resize', syncViewport);
+        window.visualViewport.addEventListener('scroll', syncViewport);
+    }
 });
