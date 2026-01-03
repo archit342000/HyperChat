@@ -307,8 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
             updateDots();
         });
 
-        carouselPrev?.addEventListener('click', () => scrollCarousel(-1));
-        carouselNext?.addEventListener('click', () => scrollCarousel(1));
+        // carouselPrev?.addEventListener('click', () => scrollCarousel(-1));
+        // carouselNext?.addEventListener('click', () => scrollCarousel(1));
 
         carouselDots.forEach((dot, i) => {
             dot.addEventListener('click', () => {

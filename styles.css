@@ -167,7 +167,8 @@ body {
 #chat-input-area {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 5rem;
+    /* Match sidebar reservation */
     right: 0;
     padding: 24px;
     background: linear-gradient(to top, white 60%, transparent);
@@ -1577,49 +1578,6 @@ aside {
     pointer-events: none;
 }
 
-/* Controls */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3.5rem;
-    /* Slightly larger */
-    height: 3.5rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--content-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.2s var(--ease-spring);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.dark .carousel-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.dark .carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.carousel-btn.prev {
-    left: 1rem;
-}
-
-.carousel-btn.next {
-    right: 1rem;
-}
 
 .carousel-dots {
     position: absolute;
