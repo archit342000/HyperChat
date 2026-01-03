@@ -165,19 +165,19 @@ body {
 }
 
 #chat-input-area {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 24px;
-    background: linear-gradient(to top, white 80%, transparent);
+    background: linear-gradient(to top, white 60%, transparent);
     z-index: 30;
     display: flex;
     justify-content: center;
 }
 
 .dark #chat-input-area {
-    background: linear-gradient(to top, var(--bg-dark) 80%, transparent);
+    background: linear-gradient(to top, #0A0A0A 60%, transparent);
 }
 
 .input-container {
@@ -693,15 +693,10 @@ pre {
 
 /* 5.H Input Area */
 #chat-input-area {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
     width: 100%;
     max-width: 768px;
-    /* max-w-3xl is ~768px in tailwind context usually, strict is 768px */
     padding: 0 16px 32px 16px;
-    z-index: var(--z-sidebar);
+    margin: 0 auto;
 }
 
 .input-container {
@@ -1393,10 +1388,8 @@ input[type=range]:active::-moz-range-thumb {
     transform: scale(1.1);
 }
 
-/* Sidebar Logic */
 aside {
     position: fixed;
-    /* Decouple from content flow */
     left: 0;
     top: 0;
     height: 100vh;
@@ -1696,16 +1689,18 @@ aside.resizing {
 /* Main Layout Stability */
 #app-root {
     display: block;
-    /* Remove flex to stabilize content */
+    width: 100%;
+    overflow-x: hidden;
 }
 
 main {
     width: 100%;
-    padding-left: 0;
-    /* Content centers to viewport */
+    padding-left: 5rem;
+    /* Reservation for collapsed rail */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
 }
 
 /* 5.11 Utility Elements */
