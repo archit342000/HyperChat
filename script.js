@@ -117,6 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Auto-collapse for mobile on load
+    if (window.innerWidth <= 768) {
+        sidebar.classList.remove('sidebar-expanded');
+        sidebar.classList.add('sidebar-collapsed');
+        toggleIconPath.setAttribute('d', 'M9 6l6 6-6 6');
+    }
+
     // 3. Resizable Navigation Rail Logic
     let isResizing = false;
 
@@ -137,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebar.classList.add('sidebar-collapsed');
             sidebar.style.width = '';
             toggleIconPath.setAttribute('d', 'M9 6l6 6-6 6');
-        } else if (newWidth >= 240 && newWidth <= 480) {
+        } else if (window.innerWidth > 768 && newWidth >= 240 && newWidth <= 480) {
             sidebar.classList.remove('sidebar-collapsed');
             sidebar.classList.add('sidebar-expanded');
             sidebar.style.width = `${newWidth}px`;
