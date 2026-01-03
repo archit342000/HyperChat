@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const clearApiTrigger = document.getElementById('clear-api-trigger');
     const clearChatBtn = document.getElementById('clear-chat-btn');
+    const mobileToggle = document.getElementById('mobile-toggle');
 
     const resetPromptBtn = document.getElementById('reset-prompt');
     const resetSamplingBtn = document.getElementById('reset-sampling');
@@ -152,19 +153,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    sidebarToggle.addEventListener('click', () => {
-        const isCollapsed = sidebar.classList.contains('sidebar-collapsed');
-        sidebar.style.width = '';
+    [sidebarToggle, mobileToggle].forEach(btn => {
+        btn?.addEventListener('click', () => {
+            const isCollapsed = sidebar.classList.contains('sidebar-collapsed');
+            sidebar.style.width = '';
 
-        if (isCollapsed) {
-            sidebar.classList.remove('sidebar-collapsed');
-            sidebar.classList.add('sidebar-expanded');
-            toggleIconPath.setAttribute('d', 'M15 6l-6 6 6 6');
-        } else {
-            sidebar.classList.remove('sidebar-expanded');
-            sidebar.classList.add('sidebar-collapsed');
-            toggleIconPath.setAttribute('d', 'M9 6l6 6-6 6');
-        }
+            if (isCollapsed) {
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.add('sidebar-expanded');
+                toggleIconPath.setAttribute('d', 'M15 6l-6 6 6 6');
+            } else {
+                sidebar.classList.remove('sidebar-expanded');
+                sidebar.classList.add('sidebar-collapsed');
+                toggleIconPath.setAttribute('d', 'M9 6l6 6-6 6');
+            }
+        });
     });
 
     // 4. Configuration Event Listeners
