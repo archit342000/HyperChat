@@ -1498,11 +1498,12 @@ aside {
     }
 
     #chat-input-area {
-        position: fixed !important;
+        position: absolute !important;
         left: 0 !important;
         bottom: 0 !important;
         padding: 12px 16px 24px 16px;
         background: linear-gradient(to top, white 80%, transparent);
+        z-index: 40;
     }
 
     .dark #chat-input-area {
@@ -1724,6 +1725,20 @@ main {
     height: 100svh;
     position: relative;
     overflow: hidden;
+    /* Lock main, overflow messages */
+}
+
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    padding: 6rem 1.5rem 12rem 1.5rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* 5.11 Utility Elements */
@@ -1784,17 +1799,6 @@ main {
     color: inherit;
 }
 
-#messages {
-    max-width: 1200px;
-    /* Increased from 900px to match hero */
-    margin: 0 auto;
-    position: relative;
-    /* For utility-btn positioning */
-    /* Center to viewport */
-    width: 100%;
-    /* Ensure content doesn't get hidden behind sidebar when sidebar is ultra-wide */
-    padding: 6rem 1.5rem 12rem 1.5rem;
-}
 
 .resize-handle {
     position: absolute;

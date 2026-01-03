@@ -675,12 +675,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }, true); // Use capture phase because 'load' doesn't bubble
 
     function scrollToBottom(behavior = 'auto') {
+        const messages = document.getElementById('messages');
+        if (!messages) return;
+
         requestAnimationFrame(() => {
-            // Target both window and container for maximum compatibility
-            window.scrollTo({ top: document.body.scrollHeight, behavior: behavior });
-            if (messagesContainer) {
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
+            messages.scrollTo({
+                top: messages.scrollHeight,
+                behavior: behavior
+            });
         });
     }
 
@@ -761,11 +763,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth <= 768) {
                 // Calculate the offset from the bottom of the layout viewport
                 const offset = window.innerHeight - window.visualViewport.height;
-                // Move the fixed input area up by the keyboard height
-                chatInputArea.style.transform = `translateY(-${offset}px)`;
 
-                // Ensure message stream is also correctly offset if needed
-                // (Though with SVH/fixed layout, this is usually enough for the input)
+                // Only move if keyboard height is significant (> 10px) to avoid jitter
+                if (offset > 10) {
+                    chatInputArea.style.transform = `translateY(-${offset}px)`;
+                } else {
+                    chatInputArea.style.transform = 'translateY(0)';
+                }
             } else {
                 chatInputArea.style.transform = '';
             }
